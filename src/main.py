@@ -2,15 +2,17 @@ import winreg
 import os
 from dotenv import load_dotenv, set_key
 
+
 def add_to_startup(file_path):
     key = winreg.HKEY_CURRENT_USER
     run_key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Run'
 
     with winreg.OpenKey(key, run_key, 0, winreg.KEY_SET_VALUE) as registry_key:
-        winreg.SetValue(registry_key, 'activateExSSD', 0, winreg.REG_SZ, file_path)
+        winreg.SetValue(registry_key, 'eloyScripts', 0, winreg.REG_SZ, file_path)
+
 
 if __name__ == '__main__':
-    #load local environmental variables
+    # load local environmental variables
     dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
     load_dotenv(dotenv_path=dotenv_path)
 
